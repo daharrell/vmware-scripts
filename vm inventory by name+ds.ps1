@@ -1,1 +1,1 @@
-﻿Get-VM | Select Name,@{N="Datastore";E={[string]::Join(',',(Get-Datastore -Id $_.DatastoreIdList | Select -ExpandProperty Name))}},@{N="Folder";E={$_.Folder.Name}} |Export-Csv C:\users\dan_harrell\desktop\report.csv -NoTypeInformation -UseCulture
+﻿Get-VM | Select Name,@{N="Datastore";E={[string]::Join(',',(Get-Datastore -Id $_.DatastoreIdList | Select -ExpandProperty Name))}},@{N="Folder";E={$_.Folder.Name}} |Export-Csv C:\inventory_report.csv -NoTypeInformation -UseCulture
