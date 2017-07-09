@@ -1,1 +1,0 @@
-﻿Get-VM | Where{$_.Guest.OSFullName -match 'windows'}|Get-NetworkAdapter | Set-NetworkAdapter -Connected:$true -Confirm:$false
