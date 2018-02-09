@@ -1,2 +1,1 @@
-Get-Datacenter "DC Name" | Get-VM | Get-CDDrive | where {$_.IsoPath -ne $null} | Set-CDDrive -NoMedia -Confirm:$False |Export-Csv C:\PATH\ESC_172_19_3_4_cdrom--eject-inventory.csv -No
-TypeInformation -UseCulture
+Get-Datacenter "DC Name" | Get-VM | Get-CDDrive | where {$_.IsoPath -ne $null} | Set-CDDrive -NoMedia -Confirm:$False 
