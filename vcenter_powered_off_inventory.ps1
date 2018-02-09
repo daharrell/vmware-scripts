@@ -2,11 +2,7 @@
 $Report = @()
 $VMs = get-vm |Where-object {$_.powerstate -eq "poweredoff"}
 $Datastores = Get-Datastore | select Name, Id
-Get-VIEvent -Entity $VMs -MaxSamples ([int]::MaxValue) |
-
-where {$_ -is [VMware.Vim.VmPoweredOffEvent]} |
-
-Group-Object -Property {$_.Vm.Name} | %{
+Get-VIEvent -Entity $VMs -MaxSamples ([int]::MaxValue) | where {$_ -is [VMware.Vim.VmPoweredOffEvent]} |Group-Object -Property {$_.Vm.Name} | %{
 
   $lastPO = $_.Group | Sort-Object -Property CreatedTime -Descending | Select -First 1
 
