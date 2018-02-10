@@ -1,3 +1,3 @@
 Connect-VIserver
-get-view -viewtype virtualmachine -Filter @{'Config.Tools.SyncTimeWithHost'='True'} | select name |Export-Csv C:\timesync.csv -NoTypeInformation -
-UseCulture
+get-view -viewtype virtualmachine -Filter @{'Config.Tools.SyncTimeWithHost'='True'} | select name |Export-Csv C:\timesync.csv -NoTypeInformation -UseCulture
+Disconnect-viserver * -confirm:$false
