@@ -1,2 +1,0 @@
-Get-Datacenter "DC NAME" | Get-VM | Get-CDDrive | where {$_.IsoPath} | Select Parent,Name,ConnectionState,IsoPath |Export-Csv C:\Your PATH\cdrom-inventory.csv -NoTypeInfor
-mation -UseCulture
