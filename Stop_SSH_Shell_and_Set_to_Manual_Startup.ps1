@@ -5,14 +5,16 @@
 #in powercli.
 Connect-Viserver
 
-##Change startup policy of SSH to Manual
-Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM-SSH"} | set-vmhostservice -policy "Off"
+###Change startup policy of SSH to Manual
+#Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM-SSH"} | set-vmhostservice -policy "Off"
 
-##Change startup policy of ESXI Shell - TSM to Manual
-Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM"} | set-vmhostservice -policy "Off"
+###Change startup policy of ESXI Shell - TSM to Manual
+#Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM"} | set-vmhostservice -policy "Off"
 
-##Stop of ESXI SHell -TSM service
-Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM"} | Stop-VMHostService -Confirm:$false
+###Stop of ESXI SHell -TSM service
+#Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM"} | Stop-VMHostService -Confirm:$false
 
-##Stop of SSH service
-Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM-SSH"} | Stop-VMHostService -Confirm:$false
+###Stop of SSH service
+#Get-Datacenter "DC Name" | Get-vmhost -state Connected | get-vmhostservice | where-object {$_.key -eq "TSM-SSH"} | Stop-VMHostService -Confirm:$false
+
+Disconnect-viserver * -confirm:$false
