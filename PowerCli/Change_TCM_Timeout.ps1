@@ -1,4 +1,3 @@
-
 #Written by Dan Harrell
 #Sets the timeout of TCM to 300 seconds.
 Connect-VIServer
