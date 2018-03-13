@@ -1,0 +1,12 @@
+isolation.ghi.host.shellAction.disablE,TRUE
+isolation.tools.dispTopoRequest.disable,TRUE
+isolation.tools.trashFolderState.disable,TRUE
+isolation.tools.ghi.trayicon.disable,TRUE
+isolation.tools.unity.disable,TRUE
+isolation.tools.unityInterlockOperation.disable,TRUE
+isolation.tools.unity.push.update.disable,TRUE
+isolation.tools.unity.taskbar.disable,TRUE
+isolation.tools.unityActive.disable,TRUE
+isolation.tools.unity.windowContents.disable,TRUE
+isolation.tools.vmxDnDVersionGet.disable,TRUE
+isolation.tools.guestDnDVersionSet.disable,TRUE
