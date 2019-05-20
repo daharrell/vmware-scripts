@@ -1,7 +1,8 @@
-# Will output a basic list of Windows VM's showing power state - number of vCPU's and Ram
-# Name                 PowerState Num CPUs MemoryGB
-# ----                 ---------- -------- --------
-# VM 1                    PoweredOn  4        4.000
-# VM 2            PoweredOn  4        16.000
-
-Get-Cluster "ClusterName" | Get-VM | Where{$_.Guest.OSFullName -match 'windows'}
+#Creates a list of all Windows Servers within a Cluster, their power state, number of CPUS and memory
+#If you want to run against a specific cluster, add the cluster name after Get-Cluster
+#Ex. Get-Cluster "SomeClusterName"
+#If you are unsure of what the clusters names are you can just run Get-Cluster by itself to output a list
+# Authored by Dan Harrell
+Connect-Viserver
+Get-Cluster | Get-VM | Where{$_.Guest.OSFullName -match 'windows'} | Export-Csv -path "c:\users\$env:USERNAME\Desktop\ListWindowsServers.csv" -NoTypeInformation -UseCulture
+Disconnect-viserver * -confirm:$false
