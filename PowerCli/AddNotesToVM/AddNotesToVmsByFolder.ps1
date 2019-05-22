@@ -1,3 +1,7 @@
+#Adds notes to the notes field for vm's
+#Authored by Dan Harrell
+#Updated 5/22/2019
+
 #Variables to be entered here
 $vcentername = "NameOrIpOfVcenterGoesHere:
 $dcname = "NameOfTheVMdatacenterGoeshere"
