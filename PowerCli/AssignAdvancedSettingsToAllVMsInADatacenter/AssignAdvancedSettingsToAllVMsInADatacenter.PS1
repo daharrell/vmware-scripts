@@ -1,6 +1,9 @@
 #Used to assign advanced settings to all VM's in a Vcenter DataCenter
 #Create a two column csv with the setting name and the value the setting needs to be
-#Input file is the path to where the csv is located - exampe shows it located on a users desktop
+#Input file is the path to where the csv is located - example shows it located on a users desktop
+#Authored by Dan Harrell
+#Updated 5/22/2019
+
 $InputFile = “c:\users\$env:USERNAME\desktop\AdvancedSettings.csv"
 $dcname = "NameOfTheVMdatacentergoeshere"
 $KeyValue = Import-Csv $InputFile -Header Name,Value
