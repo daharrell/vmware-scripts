@@ -1,4 +1,8 @@
-﻿Connect-VIServer
+#vcenter name or IP
+$vcenter = "NameOrIPofVcenter"
+$pathToExport = "c:\users\$env:USERNAME\desktop\vCenterPoweredOffInventory.csv"
+
+Connect-VIServer $vcenter
 $Report = @()
 $VMs = get-vm |Where-object {$_.powerstate -eq "poweredoff"}
 $Datastores = Get-Datastore | select Name, Id
@@ -26,5 +30,5 @@ Get-VIEvent -Entity $VMs -MaxSamples ([int]::MaxValue) | where {$_ -is [VMware.V
 
 }
 
-$report | Sort Name | Export-Csv -Path "C:\inventory_powered_off_vm.csv" -NoTypeInformation -UseCulture
+$report | Sort Name | Export-Csv -Path $pathToExport -NoTypeInformation -UseCulture
 disconnect-viserver * -confirm:$false
