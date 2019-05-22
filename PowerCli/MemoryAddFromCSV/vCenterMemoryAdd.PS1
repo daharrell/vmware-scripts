@@ -19,6 +19,6 @@ ForEach ($vm in $vms) {
 
     Write-Host "Adding $recordRam to $recordName"
     #Lets add mem to the vm's
-    Get-VM -Name $recordName | Set-VM -MemoryGB $vmMem
+    Get-VM -Name $vmName | Set-VM -MemoryGB $vmMem
     }
 Disconnect-viserver * -confirm:$false
