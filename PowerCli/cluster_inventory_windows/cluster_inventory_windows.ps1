@@ -2,7 +2,13 @@
 #If you want to run against a specific cluster, add the cluster name after Get-Cluster
 #Ex. Get-Cluster "SomeClusterName"
 #If you are unsure of what the clusters names are you can just run Get-Cluster by itself to output a list
-# Authored by Dan Harrell
-Connect-Viserver
+
+#Authored by Dan Harrell
+#Updated 5/22/2019
+
+#vcenter name or IP
+$vcenter = "NameOrIPofVcenter"
+
+Connect-Viserver $vcenter
 Get-Cluster | Get-VM | Where{$_.Guest.OSFullName -match 'windows'} | Export-Csv -path "c:\users\$env:USERNAME\Desktop\ListWindowsServers.csv" -NoTypeInformation -UseCulture
 Disconnect-viserver * -confirm:$false
