@@ -8,7 +8,8 @@
 
 #vcenter name or IP
 $vcenter = "NameOrIPofVcenter"
+$PathToExport = "c:\users\$env:USERNAME\desktop\" + $vcenter+"_ListOfWindowsServers.csv"
 
 Connect-Viserver $vcenter
-Get-Cluster | Get-VM | Where{$_.Guest.OSFullName -match 'windows'} | Export-Csv -path "c:\users\$env:USERNAME\Desktop\ListWindowsServers.csv" -NoTypeInformation -UseCulture
+Get-Cluster | Get-VM | Where{$_.Guest.OSFullName -match 'windows'} | Export-Csv -path $PathToExport -NoTypeInformation -UseCulture
 Disconnect-viserver * -confirm:$false
