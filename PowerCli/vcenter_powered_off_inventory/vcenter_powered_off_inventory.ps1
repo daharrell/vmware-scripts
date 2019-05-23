@@ -1,6 +1,6 @@
 #vcenter name or IP
 $vcenter = "NameOrIPofVcenter"
-$pathToExport = "c:\users\$env:USERNAME\desktop\vCenterPoweredOffInventory.csv"
+$pathToExport = "c:\users\$env:USERNAME\desktop\" + $vcenter + "_PoweredOffInventory.csv"
 
 Connect-VIServer $vcenter
 $Report = @()
