@@ -17,7 +17,7 @@ ForEach ($vm in $vms) {
     $vmName = $vm.name
     $vmMem = $vm.mem
 
-    Write-Host "Adding $recordRam to $recordName"
+    Write-Host "Adding $vmMem to $vmName"
     #Lets add mem to the vm's
     Get-VM -Name $vmName | Shutdown-VMGuest |Set-VM -MemoryGB $vmMem
     }
