@@ -1,15 +1,28 @@
 add-pssnapin VMware.VimAutomation.Core
+
+$user="VcenterUsername"
 $pwd = Get-Content c:\pathtocredfile | ConvertTo-SecureString
-$cred = New-Object System.Management.Automation.PsCredential “usernamehere“, $pwd
-connect-viserver -server vcenterservernamehere -credential $cred
-Get-VM | Select Name,@{N="Datastore";E={[string]::Join(',',(Get-Datastore -Id $_.DatastoreIdList | Select -ExpandProperty Name))}},@{N="Host";E={$_.VMHost}},@{N="Operating system"; E={@($_.guest.OSfullname)}}, @{N="IP";E={@($_.Guest.IPAddress)}}, @{N="Power State";E={@($_.Powerstate)}} |Export-Csv C:\Users\Dan_Harrell\vmware\inventory\172.19.3.4_inventory_report.csv -NoTypeInformation -UseCulture
-Disconnect-viserver * -confirm:$false
-$file = "C:\pathtoinventory_report.csv"
+$cred = New-Object System.Management.Automation.PsCredential $user, $pwd
+#vcenter name or IP
+$vcenter = "Name or IP of Vcenter"
+#Path to export CSV
+$PathToExport = "c:\users\$env:USERNAME\desktop\" + $vcenter + "_inventory_report.csv"
+
+#Important Variables for sending the email address
 $SMTPServer = "SMTPServerAddress"
 $Username = "smtprelayemailaddress"
 $to = "sendtoemailaddress"
-$subject = "Put your subject here"
-$body = "Put your body here"
+
+
+
+connect-viserver -server $vcenter -credential $cred
+Get-VM | Select Name,@{N="Datastore";E={[string]::Join(',',(Get-Datastore -Id $_.DatastoreIdList | Select -ExpandProperty Name))}},@{N="Host";E={$_.VMHost}},@{N="Operating system"; E={@($_.guest.OSfullname)}}, @{N="IP";E={@($_.Guest.IPAddress)}}, @{N="Power State";E={@($_.Powerstate)}} |Export-Csv -path $PathToExport -NoTypeInformation -UseCulture
+Disconnect-viserver * -confirm:$false
+
+#Building and sending of email with inventory exported and attached
+$subject = $vcenter + " Inventory Report"
+$body = "Attached is the Inventory Report for " +$vcenter
+$file = $PathToExport
 $attachment = new-object Net.Mail.Attachment($file)
 $message = New-Object System.Net.Mail.MailMessage
 $message.subject = $subject
