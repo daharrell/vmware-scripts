@@ -1,4 +1,12 @@
-﻿Connect-VIServer
+#Authored by Dan Harrell
+#Updated 5/22/2019
+
+
+#vcenter name or IP
+$vcenter = "NameOrIPofVcenter"
+$pathToExport = "c:\users\$env:USERNAME\desktop\" + $vcenter + "_PoweredOnInventory.csv"
+
+Connect-VIServer $vcenter
 $Report = @()
 $VMs = get-vm |Where-object {$_.powerstate -eq "poweredon"}
 $Datastores = Get-Datastore | select Name, Id
@@ -30,5 +38,5 @@ Group-Object -Property {$_.Vm.Name} | %{
 
 }
 
-$report | Sort Name | Export-Csv -Path "C:\inventory_powered_on_vm.csv" -NoTypeInformation -UseCulture
+$report | Sort Name | Export-Csv -Path $pathToExport -NoTypeInformation -UseCulture
 disconnect-viserver * -confirm:$false
