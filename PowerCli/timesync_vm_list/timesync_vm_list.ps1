@@ -5,7 +5,7 @@
 #vcenter name or IP
 $vcenter = "NameOrIPofVcenter"
 #exports list to current users desktop
-$pathToExport = “c:\users\$env:USERNAME\desktop\timesync.csv
+$pathToExport = “c:\users\$env:USERNAME\desktop\" +$vcenter+ "_timesync.csv"
 
 Connect-VIserver $vcenter
 get-view -viewtype virtualmachine -Filter @{'Config.Tools.SyncTimeWithHost'='True'} | select name |Export-Csv $pathToExport -NoTypeInformation -UseCulture
