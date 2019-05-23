@@ -18,7 +18,7 @@ ForEach ($vm in $vms) {
     $vmMem = $vm.mem
 
     Write-Host "Adding $vmMem to $vmName"
-    #Lets add mem to the vm's
+    #Lets remove mem to the vm's
     Get-VM -Name $vmName | Shutdown-VMGuest |Set-VM -MemoryGB $vmMem
     }
 Disconnect-viserver * -confirm:$false
