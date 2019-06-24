@@ -1,5 +1,5 @@
 #Script to create a list of VM's missing tags and email Platform@hf.org 
-#Set to run weekly on bc0platops2p01
+#Set to run weekly on Hostname
 #Authored by Dan Harrell
 #Created on 6/21/2019
 #Updated 6/22/2019
