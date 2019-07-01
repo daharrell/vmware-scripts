@@ -1,7 +1,7 @@
 # Categories
 $PathToExportCleanCats = "C:\Path\to\Combined\vCenterCats.csv" 
 $getFirstLine = $true
-get-childItem "C:\Users\da287460\Desktop\TagCollector\category\*.csv" | foreach {
+get-childItem "C:\Path\to\Collected\category\*.csv" | foreach {
     $filePath = $_
     $lines = Get-Content $filePath  
     $linesToWrite = switch($getFirstLine) {
